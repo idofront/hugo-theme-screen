@@ -9,6 +9,13 @@
 
     <nav class="navbar">
         <ul class="menu">
+            <li>
+{{ if .Page.Parent }}
+                <a href="{{ .Page.Parent.Permalink }}">↑</a>
+{{ else }}
+                <span>↑</span>
+{{ end }}
+            </li>
             <li><a class="footerLink" href="{{ .Site.BaseURL }}">Home</a></li>
             {{ range .Site.Menus.header }}
             <li>
