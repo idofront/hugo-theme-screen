@@ -1,0 +1,47 @@
+{{ define "title"}}
+{{ .Title }} | {{ .Site.Params.author }}
+{{ end }}
+
+{{ define "main" }}
+{{ with .Content }}
+<div class="listContent">
+    {{- . -}}
+</div>
+{{ end }}
+<table class="lsTable">
+    {{ range .Pages }}
+    <tr>
+        <td>
+            drwxr-xr-x
+        </td>
+        <td>
+            1
+        </td>
+        <td>
+            root
+        </td>
+        <td>
+            root
+        </td>
+        <td>
+            {{ .Date.Month }}
+        </td>
+        <td class="integer">
+            {{ .Date.Day }}
+        </td>
+        <td class="integer">
+            {{ .Date.Year }}
+        </td>
+        <td>
+            <a href="{{ .Permalink }}" class="directory">{{ .Title }}</a>
+        </td>
+    </tr>
+
+    {{end}}
+</table>
+{{ end }}
+
+{{ define "footer" }}
+{{ partial "footer.html" . }}
+{{ end }}
+

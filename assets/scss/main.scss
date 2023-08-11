@@ -1,0 +1,78 @@
+@import "./components/footer";
+@import "./components/header";
+@import "./pages/single";
+
+@import "./utils/variables";
+
+body {
+    font-family: monospace;
+    color: $white;
+    background-color: $backgroundDark;
+}
+
+.title-string {
+    color: $white;
+    text-decoration: none;
+}
+
+.host {
+    color: aquamarine;
+}
+
+.path {
+    color: cornflowerblue;
+
+}
+
+.scroll {
+    overflow-y: scroll;
+}
+
+#scroll-inner {
+    height: max-content;
+}
+
+.lsTable {
+    border-spacing: 0px;
+}
+
+.lsTable tr {
+    text-align: left;
+}
+
+.lsTable tr td {
+    padding: 0px 5px;
+    font-family: monospace;
+}
+
+.lsTable tr td.integer {
+    text-align: right;
+}
+
+
+.lsTable tr td a.directory {
+    color: cornflowerblue;
+}
+
+.lsTable tr td a {
+    color: $white;
+    text-shadow: $black 0px 0px 2px;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    text-decoration: none;
+}
+
+pre code {
+  font-family: $fontCode;
+  font-size: 75%;
+  display: block;
+  background: $backgroundDarker;
+  padding: 10px;
+  overflow: auto;
+}
+
+code {
+  font-family: $fontCode;
+  font-size: 75%;
+}
+

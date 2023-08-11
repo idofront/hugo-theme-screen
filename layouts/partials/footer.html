@@ -1,0 +1,8 @@
+<footer class="footer">
+    <div class="footerInput">
+        <a class="footerLink" href="{{ .Site.BaseURL }}">
+                <span class="host">{{ .Site.Params.user }}@{{ .Site.Params.hostname }}</span>:<span class="path">{{ .Site.Params.basePath }}{{ strings.TrimRight "/" (replace .Permalink .Site.BaseURL "") }}</span>#
+            </span>
+        </a>
+    </div>
+</footer>

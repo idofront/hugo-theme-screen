@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+
+<head>
+    <title>{{ block "title" . }}
+        {{ .Site.Title }}
+        {{ end }}</title>
+
+    {{ partial "head.html" . }}
+
+</head>
+
+<body>
+{{ partial "header.html" . }}
+    <div class="scroll content">
+        <div id="scroll-inner">
+{{ block "main" . }}
+{{ end }}
+        </div>
+    </div>
+
+{{ block "footer" . }}
+{{ end }}
+</body>
+
+</html>

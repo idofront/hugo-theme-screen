@@ -1,0 +1,20 @@
+[not_found]
+    other = "NOT FOUND"
+
+[home]
+    other = "Home"
+
+[published]
+    other = "published"
+
+[reading_time]
+    other = "reading time"
+
+[authors]
+  other = "authors"
+
+[authored]
+  other = "authored by"
+
+[powered_by]
+  other = "Built with"

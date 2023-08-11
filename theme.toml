@@ -1,0 +1,13 @@
+name = "Screen"
+license = "MIT"
+licenselink = "https://github.com/idofront/hugo-theme-screen/blob/56437641bb1ae6d04d1ca9d58f200cf647b79bae/LICENSE"
+description = "Like screen theme for Hugo"
+homepage = "https://github.com/idofront/hugo-theme-screen"
+tags = ["dark", "blog"]
+features = ["blog", "dark"]
+min_version = "0.92.2"
+
+[author]
+name = "Kumazawa"
+homepage = "https://www.idofront.com/blog/"
+

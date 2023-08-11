@@ -1,0 +1,22 @@
+@import "./utils/variables";
+
+footer.vimfooter {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: $backgroundDarker;
+}
+
+.footer {
+    padding: 0px 5px;
+}
+
+.footerInput {
+    text-align: left;
+}
+
+.footerLink {
+    text-decoration: none;
+    color: $white;
+}

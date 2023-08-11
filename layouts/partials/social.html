@@ -1,0 +1,39 @@
+<table class="lsTable">
+    {{ range sort .Site.Params.social "name"}}
+    <tr>
+        <td>
+            {{ if .isDirectory | default true }}drwxr-xr-x{{ else }}-rw-r--r--{{ end }}
+        </td>
+        <td>
+            1
+        </td>
+        <td>
+            root
+        </td>
+        <td>
+            root
+        </td>
+        <td class="integer">
+            {{ if .isDirectory | default true }}4096{{ else }}1{{ end }}
+        </td>
+        <td>
+            Aug
+        </td>
+        <td class="integer">
+            1
+        </td>
+        <td class="integer">
+            2023
+        </td>
+        <td>
+            {{ if .isDirectory | default true }}
+            <a href="{{ .name | safeURL }}/" {{ if .rel }} rel="{{ .rel }}" {{ end }} class="directory">{{
+                .name
+                }}</a>
+            {{ else }}
+            <a href="{{ .url | safeURL }}" {{ if .rel }} rel="{{ .rel }}" {{ end }}>{{ .name }} -> {{ .url }}</a>
+            {{ end }}
+        </td>
+    </tr>
+    {{ end }}
+</table>
