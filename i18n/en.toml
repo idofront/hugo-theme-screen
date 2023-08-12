@@ -49,5 +49,8 @@
 [cite_isbn]
   other = "ISBN"
 
+[cite_asin]
+  other = "ASIN"
+
 [cite_url]
   other = "URL"

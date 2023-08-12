@@ -1,5 +1,5 @@
 {{ define "title"}}
-{{ .Title }} | {{ .Site.Params.author }}
+{{ .Title }} | {{ .Site.Params.siteName }}
 {{ end }}
 
 {{ define "main" }}
@@ -17,9 +17,17 @@
 {{ end }}
 <table class="lsTable">
     {{ range .Pages }}
+    {{ $isDirectory := false }}
+    {{ if in (slice "books" "categories" "tags") .Page.Type }}
+        {{ $isDirectory = true }}
+    {{ else }}
+        {{ if .Params.isDirectory | default false }}
+            {{ $isDirectory = true }}
+        {{ end }}
+    {{ end }}
     <tr>
         <td>
-            drwxr-xr-x
+            {{ if $isDirectory }}drwxr-xr-x{{ else }}-rw-r--r--{{ end }}
         </td>
         <td>
             1
@@ -29,6 +37,9 @@
         </td>
         <td>
             root
+        </td>
+        <td class="integer">
+            {{ if $isDirectory }}4096{{ else }}{{ len .Content }}{{ end }}
         </td>
         <td>
             {{ .Date.Month }}
@@ -40,7 +51,11 @@
             {{ .Date.Year }}
         </td>
         <td>
+            {{ if $isDirectory }}
             <a href="{{ .Permalink }}" class="directory">{{ .Title }}</a>
+            {{ else }}
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+            {{ end }}
         </td>
     </tr>
 

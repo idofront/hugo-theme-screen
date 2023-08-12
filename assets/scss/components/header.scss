@@ -59,8 +59,12 @@ header {
     align-items: center;
 }
 
-.menu > li.enable:hover {
+.menu > li:hover {
     background-color: $backgroundDark;
+}
+
+.menu > li.disable:hover {
+    background-color: $darkGrey;
 }
 
 .menu > li > a {

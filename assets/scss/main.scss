@@ -9,6 +9,8 @@ body {
     font-family: monospace;
     color: $white;
     background-color: $backgroundDark;
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%; /* Safari */
 }
 
 .title-string {
