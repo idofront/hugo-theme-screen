@@ -1,0 +1,36 @@
+@import "./utils/variables";
+
+table.cite_table {
+    margin: auto;
+    border: 0px;
+    border-style: none solid none none ;
+    border-color: $white;
+}
+
+th.cite_item {
+    border: 1px;
+    border-bottom-style: solid;
+    padding-top: 5px;
+    text-align: center;
+}
+
+th.cite_details {
+    border: 1px;
+    border-bottom-style: solid;
+    padding-top: 5px;
+    text-align: center;
+}
+
+td.cite_item {
+    border: 1px;
+    border-bottom-style: dashed;
+    padding-top: 5px;
+    text-align: center;
+}
+
+td.cite_details {
+    border: 1px;
+    border-bottom-style: dashed;
+    padding-top: 5px;
+    text-align: center;
+}

@@ -1,0 +1,32 @@
+<table class="cite_table">
+    <tr>
+        <th class="cite_item">{{ i18n "cite_item" }}</th><th class="cite_details">{{ i18n "cite_details" }}</th>
+    </tr>
+    <tr>
+        <td class="cite_item">{{ i18n "cite_author" }}</td><td class="cite_details">{{ delimit .Params.cite_author ", " }}</td>
+    </tr>
+    <tr>
+        <td class="cite_item">{{ i18n "cite_supervising_translator" }}</td><td class="cite_details">{{ delimit .Params.cite_supervising_translator "," }}</td>
+    </tr>
+    <tr>
+        <td class="cite_item">{{ i18n "cite_translator" }}</td><td class="cite_details">{{ delimit .Params.cite_translator "," }}</td>
+    </tr>
+    <tr>
+        <td class="cite_item">{{ i18n "cite_title" }}</td><td class="cite_details">{{ .Params.cite_title }}</td>
+    </tr>
+    <tr>
+        <td class="cite_item">{{ i18n "cite_original_title" }}</td><td class="cite_details">{{ .Params.cite_original_title }}</td>
+    </tr>
+    <tr>
+        <td class="cite_item">{{ i18n "cite_publisher" }}</td><td class="cite_details">{{ .Params.cite_publisher }}</td>
+    </tr>
+    <tr>
+        <td class="cite_item">{{ i18n "cite_publication_date" }}</td><td class="cite_details">{{ .Params.cite_publication_month }}{{ .Params.cite_publication_day }}, {{ .Params.cite_publication_year }}</td>
+    </tr>
+    <tr>
+        <td class="cite_item">{{ i18n "cite_isbn" }}</td><td class="cite_details">{{ .Params.cite_isbn }}</td>
+    </tr>
+    <tr>
+        <td class="cite_item">{{ i18n "cite_url" }}</td><td class="cite_details"><a href="{{ .Params.cite_url }}">{{ .Params.cite_url }}</a></td>
+    </tr>
+</table>

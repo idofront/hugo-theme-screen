@@ -59,17 +59,26 @@ header {
     align-items: center;
 }
 
-.menu > li {
-    padding: 5px 15px;
-}
-
-.menu > li:hover {
+.menu > li.enable:hover {
     background-color: $backgroundDark;
 }
 
 .menu > li > a {
+    padding: 5px 15px;
     color: $white;
     text-decoration: none;
+    display: block;
+}
+
+.menu > li > span {
+    padding: 5px 15px;
+    color: $gray;
+    text-decoration: none;
+    display: block;
+}
+
+.menu > li > span:hover {
+    cursor: default;
 }
 
 .dropdown {

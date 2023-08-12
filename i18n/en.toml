@@ -18,3 +18,36 @@
 
 [powered_by]
   other = "Built with"
+
+[cite_item]
+  other = "Item"
+
+[cite_details]
+  other = "Details"
+
+[cite_author]
+  other = "Author"
+  
+[cite_supervising_translator]
+  other = "Supervising Translator"
+
+[cite_translator]
+  other = "Translator"
+
+[cite_title]
+  other = "Title"
+
+[cite_original_title]
+  other = "Original Title"
+
+[cite_publisher]
+  other = "Publisher"
+
+[cite_publication_date]
+  other = "Publication Date"
+
+[cite_isbn]
+  other = "ISBN"
+
+[cite_url]
+  other = "URL"

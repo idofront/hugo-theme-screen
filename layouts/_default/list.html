@@ -3,6 +3,13 @@
 {{ end }}
 
 {{ define "main" }}
+
+{{ if .Params.show_cite | default false }}
+<div style="margin-bottom: 20px;">
+{{ partial "cite_table.html" . }}
+</div>
+{{ end }}
+
 {{ with .Content }}
 <div class="listContent">
     {{- . -}}
