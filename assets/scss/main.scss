@@ -2,6 +2,7 @@
 @import "./components/footer";
 @import "./components/header";
 @import "./pages/single";
+@import "./pages/list";
 
 @import "./utils/variables";
 
@@ -34,36 +35,6 @@ body {
     height: max-content;
 }
 
-.lsTable {
-    border-spacing: 0px;
-}
-
-.lsTable tr {
-    text-align: left;
-}
-
-.lsTable tr td {
-    padding: 0px 5px;
-    font-family: monospace;
-}
-
-.lsTable tr td.integer {
-    text-align: right;
-}
-
-
-.lsTable tr td a.directory {
-    color: cornflowerblue;
-}
-
-.lsTable tr td a {
-    color: $white;
-    text-shadow: $black 0px 0px 2px;
-    -webkit-font-smoothing: antialiased;
-    display: inline-block;
-    text-decoration: none;
-}
-
 pre code {
   font-family: $fontCode;
   font-size: 75%;
@@ -82,4 +53,3 @@ a {
     text-decoration: none;
     color: $link;
 }
-

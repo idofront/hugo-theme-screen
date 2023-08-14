@@ -18,16 +18,17 @@
                 <span>↑</span>
             </li>
 {{ end }}
-            <li><a class="footerLink" href="{{ .Site.BaseURL }}">Home</a></li>
-            {{ range .Site.Menus.header }}
+            <li><a class="footerLink" href="{{ .Site.BaseURL }}">home</a></li>
+            {{ $baseURL := .Site.BaseURL }}
+            {{ range sort .Site.Params.social "name"}}
+            {{ if .isDirectory | default false }}
             <li>
-                <a href="{{ .URL | absURL }}" title="{{ .Title }}">
-                    {{- .Name -}}
-                </a>
+                <a href="{{ $baseURL }}{{ .name | safeURL }}/" {{ if .rel }} rel="{{ .rel }}" {{ end }} class="directory">{{ .name }}</a>
             </li>
             {{ end }}
+            {{ end }}
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle">Help</a>
+                <a href="#" class="dropdown-toggle">help</a>
                 <ul class="dropdown-menu">
                     <li>{{ i18n "published" }} {{ $formattedDate := .Date.Format "2006-01-02" }}<time
                             datetime="{{ $formattedDate }}">{{ .Date

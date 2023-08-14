@@ -1,0 +1,107 @@
+@import "./utils/variables";
+
+.lsTable {
+    border-spacing: 0px;
+}
+
+.lsTable tr {
+    text-align: left;
+}
+
+.lsTable tr td {
+    padding: 0px 5px;
+    font-family: monospace;
+}
+
+.lsTable tr td.integer {
+    text-align: right;
+}
+
+
+.lsTable tr td a.directory {
+    color: $link;
+}
+
+.lsTable tr td a {
+    color: $white;
+    text-shadow: $black 0px 0px 2px;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    text-decoration: none;
+}
+
+@media screen and (max-width: $smartPhoneWidth) {
+    .lsTable tr td.permission {
+        display: none;
+    }
+
+    .lsTable tr td.numOfHardLinks {
+        display: none;
+    }
+
+    .lsTable tr td.owner{
+        display: none;
+    }
+
+    .lsTable tr td.group {
+        display: none;
+    }
+
+    .lsTable tr td.size {
+        display: none;
+    }
+
+    .lsTable tr td.year {
+        display: none;
+    }
+
+    .lsTable tr td.month {
+        display: none;
+    }
+
+    .lsTable tr td.day {
+        display: none;
+    }
+
+    .lsTable tr td.name {
+        visibility: visible;
+    }
+}
+
+@media screen and (max-width: $tabletWidth) {
+    .lsTable tr td.permission {
+        display: none;
+    }
+
+    .lsTable tr td.numOfHardLinks {
+        display: none;
+    }
+
+    .lsTable tr td.owner{
+        display: none;
+    }
+
+    .lsTable tr td.group {
+        display: none;
+    }
+
+    .lsTable tr td.size {
+        display: none;
+    }
+
+    .lsTable tr td.year {
+        display: none;
+    }
+
+    .lsTable tr td.month {
+        display: none;
+    }
+
+    .lsTable tr td.day {
+        display: none;
+    }
+
+    .lsTable tr td.name {
+        visibility: visible;
+    }
+}

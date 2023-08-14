@@ -16,9 +16,9 @@
 </div>
 {{ end }}
 <table class="lsTable">
-    {{ range .Pages }}
+    {{ range .Pages.ByTitle }}
     {{ $isDirectory := false }}
-    {{ if in (slice "books" "categories" "tags") .Page.Type }}
+    {{ if in (slice "section" "term") .Page.Kind }}
         {{ $isDirectory = true }}
     {{ else }}
         {{ if .Params.isDirectory | default false }}
@@ -26,31 +26,31 @@
         {{ end }}
     {{ end }}
     <tr>
-        <td>
+        <td class="permission">
             {{ if $isDirectory }}drwxr-xr-x{{ else }}-rw-r--r--{{ end }}
         </td>
-        <td>
+        <td class="numOfHardLinks">
             1
         </td>
-        <td>
+        <td class="owner">
             root
         </td>
-        <td>
+        <td class="group">
             root
         </td>
-        <td class="integer">
+        <td class="integer size">
             {{ if $isDirectory }}4096{{ else }}{{ len .Content }}{{ end }}
         </td>
-        <td>
+        <td class="month">
             {{ .Date.Month }}
         </td>
-        <td class="integer">
+        <td class="integer day">
             {{ .Date.Day }}
         </td>
-        <td class="integer">
+        <td class="integer year">
             {{ .Date.Year }}
         </td>
-        <td>
+        <td class="name">
             {{ if $isDirectory }}
             <a href="{{ .Permalink }}" class="directory">{{ .Title }}</a>
             {{ else }}

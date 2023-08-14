@@ -5,22 +5,19 @@
     <title>{{ block "title" . }}
         {{ .Site.Title }}
         {{ end }}</title>
-
     {{ partial "head.html" . }}
-
 </head>
 
 <body>
-{{ partial "header.html" . }}
+    {{ partial "header.html" . }}
     <div class="scroll content">
         <div id="scroll-inner">
-{{ block "main" . }}
-{{ end }}
+            {{ block "main" . }}
+            {{ end }}
         </div>
     </div>
-
-{{ block "footer" . }}
-{{ end }}
+    {{ block "footer" . }}
+    {{ end }}
 </body>
 
 </html>

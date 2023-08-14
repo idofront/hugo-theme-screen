@@ -1,31 +1,31 @@
 <table class="lsTable">
     {{ range sort .Site.Params.social "name"}}
     <tr>
-        <td>
+        <td class="permission">
             {{ if .isDirectory | default true }}drwxr-xr-x{{ else }}-rw-r--r--{{ end }}
         </td>
-        <td>
+        <td class="numOfHardLinks">
             1
         </td>
-        <td>
+        <td class="owner">
             root
         </td>
-        <td>
+        <td class="group">
             root
         </td>
-        <td class="integer">
+        <td class="integer size">
             {{ if .isDirectory | default true }}4096{{ else }}1{{ end }}
         </td>
-        <td>
+        <td class="month">
             Aug
         </td>
-        <td class="integer">
+        <td class="integer day">
             1
         </td>
-        <td class="integer">
+        <td class="integer year">
             2023
         </td>
-        <td>
+        <td class="name">
             {{ if .isDirectory | default true }}
             <a href="{{ .name | safeURL }}/" {{ if .rel }} rel="{{ .rel }}" {{ end }} class="directory">{{
                 .name
