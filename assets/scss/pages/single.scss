@@ -1,5 +1,67 @@
 @import "./utils/variables";
 
-.singleMetadata {
+div.postSingle {
+    font-family: monospace;
+}
+
+div.postSingle .singleMetadata {
     text-align: right;
+}
+
+div.postSingle h1 {
+    font-size: 1em;
+    margin-bottom: 0.5em;
+}
+
+div.postSingle h1::before {
+    content: "# ";
+}
+
+div.postSingle h2 {
+    font-size: 1em;
+    margin-bottom: 0.5em;
+}
+
+div.postSingle h2::before {
+    content: "## ";
+}
+
+div.postSingle h3 {
+    font-size: 1em;
+    margin-bottom: 0.5em;
+}
+
+div.postSingle h3::before {
+    content: "### ";
+}
+
+div.postSingle h4 {
+    font-size: 1em;
+    margin-bottom: 0.5em;
+}
+
+div.postSingle h4::before {
+    content: "#### ";
+}
+
+div.postSingle blockquote {
+    position: relative;
+    padding-left: 0em;
+    margin-left: 1em;
+}
+
+div.postSingle blockquote::before {
+    content: "> ";
+    position: absolute;
+    left: -1em;
+}
+
+div.postSingle ul {
+    list-style-type: '- ';
+    margin-left: 0em;
+}
+
+div.postSingle ol {
+    list-style-type: decimal;
+    margin-left: 0em;
 }

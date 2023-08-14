@@ -9,7 +9,7 @@
 }
 
 .lsTable tr td {
-    padding: 0px 5px;
+    padding: 0.05em 5px;
     font-family: monospace;
 }
 
@@ -28,6 +28,10 @@
     -webkit-font-smoothing: antialiased;
     display: inline-block;
     text-decoration: none;
+}
+
+.lsTable tr td a.leftPadding {
+    padding-left: 1ch;
 }
 
 @media screen and (max-width: $smartPhoneWidth) {

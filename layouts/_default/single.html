@@ -3,22 +3,9 @@
 {{ end }}
 
 {{ define "main" }}
-<div class="postWrapper">
+<div class="postSingle">
     <h1>{{ .Title }}</h1>
-    {{ if .Site.Params.showMetadata | default true }}
-    <section class="singleMetadata">
-        <dl>
-
-            {{ if .Site.Params.readingTime | default true }}
-            <dt>{{ i18n "reading_time" }}</dt>
-            <dd>{{ i18n "reading_time_desc" .ReadingTime }}</dd>
-            {{ end }}
-        </dl>
-    </section>
-    {{ end }}
-    <div>
-        {{ .Content }}
-    </div>
+    {{ .Content }}
 </div>
 
 {{ end }}

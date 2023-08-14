@@ -16,6 +16,12 @@
 </div>
 {{ end }}
 <table class="lsTable">
+    {{ $isNeedLeftPadding := false }}
+    {{ range .Pages }}
+        {{ if findRE "[[:space:]]" .Title }}
+            {{ $isNeedLeftPadding = true }}
+        {{ end }}
+    {{ end }}
     {{ range .Pages.ByTitle }}
     {{ $isDirectory := false }}
     {{ if in (slice "section" "term") .Page.Kind }}
@@ -51,11 +57,21 @@
             {{ .Date.Year }}
         </td>
         <td class="name">
-            {{ if $isDirectory }}
-            <a href="{{ .Permalink }}" class="directory">{{ .Title }}</a>
+        {{ $title := .Title }}
+        {{ $leftPadding := "" }}
+        {{ if $isNeedLeftPadding }}
+            {{ if findRE "[[:space:]]" $title }}
+                {{ $title = printf "'%s'" $title }}
             {{ else }}
-            <a href="{{ .Permalink }}">{{ .Title }}</a>
+                {{ $leftPadding = "leftPadding" }}
             {{ end }}
+        {{ end }}
+
+        {{ if $isDirectory }}
+            <a href="{{ .Permalink }}" class="directory {{ $leftPadding }}">{{ $title }}</a>
+        {{ else }}
+            <a href="{{ .Permalink }}" class="{{ $leftPadding }}">{{ $title }}</a>
+        {{ end }}
         </td>
     </tr>
 
