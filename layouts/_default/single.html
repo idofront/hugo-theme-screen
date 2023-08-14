@@ -26,8 +26,10 @@
 {{ define "footer" }}
 {{ $charCount := len .Content }}
 <footer class="vimfooter">
-    <div class="footerInput">
-        "{{ .Page.File }}" [readonly] {{ $charCount }}B
+    <div>
+        <span class="fileName">"{{ .Page.File }}"</span>
+        <span class="permission">[readonly]</span>
+        <span class="fileSize">{{ $charCount }}B</span>
     </div>
 </footer>
 {{ end }}
