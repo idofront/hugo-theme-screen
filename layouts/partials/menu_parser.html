@@ -1,0 +1,118 @@
+{{ $baseURL := .Site.BaseURL }}
+
+{{/* owner を設定する */}}
+{{ $owner := "root" }}
+{{ if isset .Record "owner" }}
+    {{ $owner = .Record.owner }}
+{{ else }}
+    {{ if isset .Site.Params.screen "owner" }}
+        {{ $owner = .Site.Params.screen.owner }}
+    {{ else }}
+        {{ if isset .Site.Params "author" }}
+            {{ $owner = .Site.Params.author }}
+        {{ else }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+
+{{/* group を設定する */}}
+{{ $group := "root" }}
+{{ if isset .Record "group" }}
+    {{ $group = .Record.group }}
+{{ else }}
+    {{ if isset .Site.Params.screen "group" }}
+        {{ $group = .Site.Params.screen.group }}
+    {{ else }}
+        {{ if isset .Site.Params "author" }}
+            {{ $group = .Site.Params.author }}
+        {{ else }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+
+{{/* ハードリンク数 */}}
+{{/* TODO ハードリンク数を設定できるようにする */}}
+{{ $numOfHardLinks := 1 }}
+
+{{/* TODO 更新日時を指定できるようにする */}}
+{{ $month := "Aug" }}
+{{ $day := 1 }}
+{{ $year := 2023 }}
+
+{{ $type := cond (isset .Record "type") .Record.type "directory" }}
+
+{{/* permission を設定する */}}
+{{ $permNum := "000" }}
+{{ if eq $type "directory" }}
+    {{ $permNum = "775" }}
+{{ else if eq $type "symlink" }}
+    {{ $permNum = "777" }}
+{{ else if eq $type "file" }}
+    {{ $permNum = "664" }}
+{{ else }}
+    {{ $permNum = "000" }}
+{{ end }}
+{{ if isset .Record "permission" }}
+    {{ $permNum = .Record.permission}}
+{{ end }}
+
+{{ $permission := printf "%03s" $permNum }}
+{{ $r := "r" }}{{ $w := "w" }}{{ $x := "x" }}{{ $dash := "-" }}
+{{ $perms := slice }}
+{{ range (split $permNum "") }}
+    {{ $digit := int . }}
+    {{ if eq $digit 7 }}{{ $perms = $perms | append (print $r $w $x) }}
+    {{ else if eq $digit 6 }}{{ $perms = $perms | append (print $r $w $dash) }}
+    {{ else if eq $digit 5 }}{{ $perms = $perms | append (print $r $dash $x) }}
+    {{ else if eq $digit 4 }}{{ $perms = $perms | append (print $r $dash $dash) }}
+    {{ else if eq $digit 3 }}{{ $perms = $perms | append (print $dash $w $x) }}
+    {{ else if eq $digit 2 }}{{ $perms = $perms | append (print $dash $w $dash) }}
+    {{ else if eq $digit 1 }}{{ $perms = $perms | append (print $dash $dash $x) }}
+    {{ else }}{{ $perms = $perms | append (print $dash $dash $dash) }}
+    {{ end }}
+{{ end }}
+{{ $permChar := delimit $perms "" }}
+
+{{/* ファイルサイズは 1 か 4096 */}}
+{{/* TODO 実際のファイルサイズを確認して適切な値を指定 */}}
+{{ $size := cond (eq $type "directory") 4096 1 }}
+
+{{/* リンクに表示する文字列を生成する */}}
+{{ $link_message := .Record.name }}
+{{ $path := cond (isset .Record "path") .Record.path .Record.name }}
+{{ $file_class := "directory" }}
+
+{{/* リンクのスタイル等を指定する */}}
+{{ $file_href := "" }}
+{{ if eq $type "directory" }}
+    {{ $file_class = "directory" }}
+    {{ $file_href = (printf "%s%s" $baseURL $path) | safeURL }}
+{{ else if eq $type "symlink" }}
+    {{ $file_class = "symlink" }}
+    {{ $file_href = $path | safeURL }}
+    {{ $link_message = printf "%s -> %s" $link_message $path }}
+{{ else if eq $type "file" }}
+    {{ $file_class = "file" }}
+    {{ $file_href = $path | safeURL }}
+{{ else }}
+    {{ $file_class = "unknown" }}
+    {{ $file_href = "" }}
+{{ end }}
+
+{{ $result :=
+    dict
+    "type" $type
+    "permission" $permChar
+    "numOfHardLinks" $numOfHardLinks
+    "owner" $owner
+    "group" $group
+    "size" $size
+    "month" $month
+    "day" $day
+    "year" $year
+    "file_href" $file_href
+    "file_class" $file_class
+    "link_message" $link_message
+}}
+
+{{ .Global.Scratch.Set "MenuRecordDict" $result }}

@@ -1,0 +1,9 @@
+{{ $Site := .Site }}
+<table class="lsTable">
+    {{ range sort .Site.Params.screen.menu "name"}}
+    {{ if .Page.screen.onHeader | default true }}
+        {{ partial "menu_record" (dict "Record" . "Site" $Site "Global" $) }}
+    {{ else }}
+    {{ end }}
+    {{ end }}
+</table>

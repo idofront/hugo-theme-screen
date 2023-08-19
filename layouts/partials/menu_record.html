@@ -1,0 +1,17 @@
+{{/* 以下，典型的な呼び出し方法 */}}
+{{/* partial "menu_parser.html" (dict "Record" . "Site" $Site "Global" $) */}}
+
+{{ partial "menu_parser.html" . }}
+
+{{ $params := .Global.Scratch.Get "MenuRecordDict" }}
+<tr>
+    <td class="permission">{{ cond (eq $params.type "directory") "d" "-" }}{{ $params.permission }}</td>
+    <td class="numOfHardLinks">{{ $params.numOfHardLinks }}</td>
+    <td class="owner">{{ $params.owner }}</td>
+    <td class="group">{{ $params.group }}</td>
+    <td class="integer size">{{ $params.size }}</td>
+    <td class="month">{{ $params.month }}</td>
+    <td class="integer day">{{ $params.day }}</td>
+    <td class="integer year">{{ $params.year }}</td>
+    <td class="name"><a href="{{ $params.file_href }}" class="{{ $params.file_class }}">{{ $params.link_message }}</a></td>
+</tr>
