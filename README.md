@@ -16,8 +16,8 @@ OR
 
 Import manually:
 
-1. git clone https://github.com/idofront/hugo-theme-screen themes/screen
-2. Add `theme = "screen"`` in your config.toml:
+1. `git clone https://github.com/idofront/hugo-theme-screen themes/screen`
+2. Add `theme = "screen"` in your config.toml.
 
 
 ## Configuration
