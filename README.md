@@ -1,6 +1,6 @@
 # Screen
 
-Screen is a aaaaaaaaa
+Screen is a theme for Hugo that has the look and feel of the Linux shell/vi.
 
 ## Get the theme
 
@@ -24,28 +24,36 @@ Import manually:
 
 ### Menu
 
-このテーマ固有の設定は `params.screen.menu` に記述します．
+Specific settings for this theme are described in `params.screen`.
+
+| parameter | description                                    |
+|-----------|------------------------------------------------|
+| user      | Displayed as the username when showing a path. |
+| owner     | Displayed as the user for each item.           |
+| group     | Displayed as the group for each item.          |
+
+For each Page, specific settings related to this theme should be written in `params.screen.menu`.
 
 | parameter  | description |
 |------------|-------------|
-| name       | 表示する際の文字列である．省略は許容されない． |
-| path       | リンク先のパスである．省略した場合は `name` で代替する． |
-| onHeader   | ヘッダに表示する場合は true，それ以外の場合は false を指定する．省略した場合は `true` として扱う． |
-| onTop      | トップページに表示する場合は true，それ以外の場合は false を指定する．省略した場合は `true` として扱う． |
-| type       | 項目の種別を指定する[^params.screen.menu.type]．省略した場合は `directory` として扱う． |
-| permission | Linux における一般的な permission 設定と同じ 3 桁の整数で指定する．指定しなかった場合は `type` によって自動的に設定する． |
-| owner      | ユーザを指定する．省略した場合は `params.screen.owner`，`params.author`，`"root"` の順に参照する． |
-| group      | グループを指定する．省略した場合は `params.screen.group`，`params.author`，`"root"` の順に参照する． |
-| year       | 更新年である．省略した場合は `1970` とする． |
-| month      | 更新月である．省略した場合は `Jan` とする． |
-| day        | 更新日である．省略した場合は `1` とする． |
+| name       | The string to be displayed. Omission is not allowed. |
+| path       | The path to which the link leads. If omitted, `name` will be used as a substitute. |
+| onHeader   | Specify `true` to display on the header, `false` otherwise. Defaults to `true` if omitted. |
+| onTop      | Specify `true` to display on the homepage, `false` otherwise. Defaults to `true` if omitted. |
+| type       | Designates the type of the item[^params.screen.menu.type]. Defaults to `"directory"` if omitted. |
+| permission | Set using a 3-digit integer, similar to common Linux permission settings. If not specified, it will be automatically set based on `type`. |
+| owner      | Designate the user. If omitted, it refers to `params.screen.owner`, then `params.author`, and finally defaults to `"root"`. |
+| group      | Designate the group. If omitted, it refers to `params.screen.group`, then `params.author`, and finally defaults to `"root"`. |
+| year       | The year of the update. Defaults to `1970` if omitted. |
+| month      | The month of the update. Defaults to `"Jan"` if omitted. |
+| day        | The day of the update. Defaults to `1` if omitted. |
 
-[^params.screen.menu.type]: type の種類
+[^params.screen.menu.type]: Types of `type`
     | type      | default permission | description                   |
     |-----------|--------------------|-------------------------------|
-    | directory | 775                | directory のように表示する．     |
-    | symlink   | 777                | symbolic link のように表示する． |
-    | file      | 664                | file のように表示する．          |
+    | directory | 775                | Displayed as a directory. |
+    | symlink   | 777                | Displayed as a symbolic link |
+    | file      | 664                | Displayed as a file. |
 
 #### Examples
 
@@ -61,10 +69,6 @@ Import manually:
   group = "root"
 ```
 
-### Content
+## Demo
 
-未記入
-
-#### Examples
-
-未記入
+- [idofront.com](https://www.idofront.com/blog/)
