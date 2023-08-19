@@ -22,6 +22,8 @@ Import manually:
 
 ## Configuration
 
+### Menu
+
 このテーマ固有の設定は `params.screen.menu` に記述します．
 
 | parameter  | description |
@@ -34,6 +36,9 @@ Import manually:
 | permission | Linux における一般的な permission 設定と同じ 3 桁の整数で指定する．指定しなかった場合は `type` によって自動的に設定する． |
 | owner      | ユーザを指定する．省略した場合は `params.screen.owner`，`params.author`，`"root"` の順に参照する． |
 | group      | グループを指定する．省略した場合は `params.screen.group`，`params.author`，`"root"` の順に参照する． |
+| year       | 更新年である．省略した場合は `1970` とする． |
+| month      | 更新月である．省略した場合は `Jan` とする． |
+| day        | 更新日である．省略した場合は `1` とする． |
 
 [^params.screen.menu.type]: type の種類
     | type      | default permission | description                   |
@@ -42,7 +47,7 @@ Import manually:
     | symlink   | 777                | symbolic link のように表示する． |
     | file      | 664                | file のように表示する．          |
 
-### Examples
+#### Examples
 
 ```toml
 [[params.screen.menu]]
@@ -55,3 +60,11 @@ Import manually:
   owner = "root"
   group = "root"
 ```
+
+### Content
+
+未記入
+
+#### Examples
+
+未記入

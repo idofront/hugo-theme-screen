@@ -10,72 +10,24 @@
 </div>
 {{ end }}
 
-{{ with .Content }}
-<div class="listContent">
-    {{- . -}}
-</div>
-{{ end }}
+{{/* TODO list の owner, group に対応する */}}
 <table class="lsTable">
-    {{ $isNeedLeftPadding := false }}
-    {{ range .Pages }}
-        {{ if findRE "[[:space:]]" .Title }}
-            {{ $isNeedLeftPadding = true }}
-        {{ end }}
-    {{ end }}
-    {{ range .Pages.ByTitle }}
-    {{ $isDirectory := false }}
-    {{ if in (slice "section" "term") .Page.Kind }}
-        {{ $isDirectory = true }}
-    {{ else }}
-        {{ if .Params.isDirectory | default false }}
-            {{ $isDirectory = true }}
-        {{ end }}
-    {{ end }}
-    <tr>
-        <td class="permission">
-            {{ if $isDirectory }}drwxr-xr-x{{ else }}-rw-r--r--{{ end }}
-        </td>
-        <td class="numOfHardLinks">
-            1
-        </td>
-        <td class="owner">
-            root
-        </td>
-        <td class="group">
-            root
-        </td>
-        <td class="integer size">
-            {{ if $isDirectory }}4096{{ else }}{{ len .Content }}{{ end }}
-        </td>
-        <td class="month">
-            {{ .Date.Month }}
-        </td>
-        <td class="integer day">
-            {{ .Date.Day }}
-        </td>
-        <td class="integer year">
-            {{ .Date.Year }}
-        </td>
-        <td class="name">
-        {{ $title := .Title }}
-        {{ $leftPadding := "" }}
-        {{ if $isNeedLeftPadding }}
-            {{ if findRE "[[:space:]]" $title }}
-                {{ $title = printf "'%s'" $title }}
-            {{ else }}
-                {{ $leftPadding = "leftPadding" }}
-            {{ end }}
-        {{ end }}
-
-        {{ if $isDirectory }}
-            <a href="{{ .Permalink }}" class="directory {{ $leftPadding }}">{{ $title }}</a>
-        {{ else }}
-            <a href="{{ .Permalink }}" class="{{ $leftPadding }}">{{ $title }}</a>
-        {{ end }}
-        </td>
-    </tr>
-
-    {{end}}
+    {{ $Site := .Site }}
+    {{ range sort .Pages "Title"}}
+    {{ $type := cond (in (slice "section" "term") .Page.Kind) "directory" "file" }}
+    {{ $size := cond (eq $type "directory") 4096 (len .Content) }}
+    {{ $Record := dict
+        "name" .Title
+        "path" .Permalink
+        "type" $type
+        "permission" "775"
+        "year" .Date.Year
+        "month" .Date.Month
+        "day" .Date.Day
+        "size" $size
+        }}
+    {{ partial "menu_record" (dict "Record" $Record "Site" $Site "Global" $) }}
+{{ end }}
 </table>
 {{ end }}
 

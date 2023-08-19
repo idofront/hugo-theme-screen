@@ -34,10 +34,9 @@
 {{/* TODO ハードリンク数を設定できるようにする */}}
 {{ $numOfHardLinks := 1 }}
 
-{{/* TODO 更新日時を指定できるようにする */}}
-{{ $month := "Aug" }}
-{{ $day := 1 }}
-{{ $year := 2023 }}
+{{ $month := cond (isset .Record "month") .Record.month "Jan" }}
+{{ $day := cond (isset .Record "day") .Record.day 1 }}
+{{ $year := cond (isset .Record "year") .Record.year 1970 }}
 
 {{ $type := cond (isset .Record "type") .Record.type "directory" }}
 
@@ -75,23 +74,41 @@
 
 {{/* ファイルサイズは 1 か 4096 */}}
 {{/* TODO 実際のファイルサイズを確認して適切な値を指定 */}}
-{{ $size := cond (eq $type "directory") 4096 1 }}
+
+{{ $size := cond (isset .Record "size") .Record.size  1 }}
 
 {{/* リンクに表示する文字列を生成する */}}
-{{ $link_message := .Record.name }}
+{{ $escaped_link_message := "INVALID_TYPE" }}
 {{ $path := cond (isset .Record "path") .Record.path .Record.name }}
 {{ $file_class := "directory" }}
 
 {{/* リンクのスタイル等を指定する */}}
 {{ $file_href := "" }}
 {{ if eq $type "directory" }}
+    {{/* 空白はアンダースコアに置換する */}}
+    {{/* TODO アンダースコアに置換するのではなくシングルクォートでくくる */}}
+    {{/* TODO その他シングルクォートなどエスケープ処理が必要な場合に対応する */}}
+    {{ $escaped_link_message = replace .Record.name " " "_" }}
+
     {{ $file_class = "directory" }}
-    {{ $file_href = (printf "%s%s" $baseURL $path) | safeURL }}
+    {{ $file_href = (printf "%s" $path) | safeURL }}
 {{ else if eq $type "symlink" }}
+    {{/* 空白はアンダースコアに置換する */}}
+    {{/* TODO アンダースコアに置換するのではなくシングルクォートでくくる */}}
+    {{/* TODO その他シングルクォートなどエスケープ処理が必要な場合に対応する */}}
+    {{ $escaped_link_message = replace .Record.name " " "_" }}
+    {{ $escaped_path := replace $path " " "_" }}
+
     {{ $file_class = "symlink" }}
     {{ $file_href = $path | safeURL }}
-    {{ $link_message = printf "%s -> %s" $link_message $path }}
+    {{ $escaped_link_message = printf "%s -> %s" (replace .Record.name " " "_") (replace $path " " "_") }}
 {{ else if eq $type "file" }}
+    {{/* 空白はアンダースコアに置換する */}}
+    {{/* TODO アンダースコアに置換するのではなくシングルクォートでくくる */}}
+    {{/* TODO その他シングルクォートなどエスケープ処理が必要な場合に対応する */}}
+    {{ $escaped_link_message = replace .Record.name " " "_" }}
+    {{ $escaped_path := replace $path " " "_" }}
+
     {{ $file_class = "file" }}
     {{ $file_href = $path | safeURL }}
 {{ else }}
@@ -112,7 +129,7 @@
     "year" $year
     "file_href" $file_href
     "file_class" $file_class
-    "link_message" $link_message
+    "link_message" $escaped_link_message
 }}
 
 {{ .Global.Scratch.Set "MenuRecordDict" $result }}
