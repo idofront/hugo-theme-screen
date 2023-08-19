@@ -2,6 +2,10 @@
 
 Screen is a theme for Hugo that has the look and feel of the Linux shell/vi.
 
+![Top](https://github.com/idofront/hugo-theme-screen/blob/main/images/top.png?raw=true)
+
+![Posts](https://github.com/idofront/hugo-theme-screen/blob/main/images/Posts.png?raw=true)
+
 ## Get the theme
 
 Import as hugo module in config.toml:
